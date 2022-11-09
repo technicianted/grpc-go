@@ -118,6 +118,7 @@ func New(config *bootstrap.ServerConfig, updateHandler pubsub.UpdateHandler, val
 			Time:    5 * time.Minute,
 			Timeout: 20 * time.Second,
 		}),
+		grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(16 * 1024 * 1024)),
 	}
 
 	if boff == nil {
